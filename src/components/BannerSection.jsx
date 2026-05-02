@@ -12,7 +12,7 @@ const BannerSection = () => {
                 <button className="btn btn-primary text-xl bg-white text-black border-gray-300 py-6"><FaAppStoreIos color="indigo" size={32} /> App Store</button>
             </div>
 
-            <div className="bg-linear-to-br from-[#632EE3] to-[#9F62F2] text-white mt-[26rem] relative flex flex-col items-center pt-6 pb-10 mb-20">
+            <div className="bg-linear-to-br from-[#632EE3] to-[#9F62F2] text-white mt-[26rem] relative flex flex-col items-center pt-6 pb-10">
                 <img src={heroImg} className="absolute bottom-full left-1/2 -translate-x-1/2 h-[23rem]" />
                 <h2 className="text-[2.5rem] font-semibold">Trusted by Millions, Built for You</h2>
                 <div className="mt-5 flex items-center gap-16">

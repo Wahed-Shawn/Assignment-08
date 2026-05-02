@@ -10,7 +10,7 @@ const Home = () => {
         <div className="mt-38">
             <BannerSection />
 
-            <section className="px-8 w-full">
+            <section className="px-8 w-full bg-gray-100 pt-20">
                 <h1 className="text-[#001931] text-4xl font-bold text-center">Trending Apps</h1>
                 <p className="text-center mt-4 mb-10 text-lg text-gray-500">Explore All Trending Apps on the Market developed by us</p>
 
