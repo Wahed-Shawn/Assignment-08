@@ -5,6 +5,7 @@ import { NavLink } from "react-router";
 
 const Home = () => {
     const { apps, loading } = useFetch()
+    console.log(apps.sort((a, b) => b.ratingAvg - a.ratingAvg).slice(0, 4))
 
     return (
         <div className="mt-38">
@@ -22,7 +23,7 @@ const Home = () => {
                             <div className="skeleton h-4 w-full"></div>
                             <div className="skeleton h-4 w-full"></div>
                         </div>) :
-                            apps.sort((a, b) => a - b).slice(0, 8).map(app => <AppCard key={app.id} app={app} />)
+                            apps.sort((a, b) => b.ratingAvg - a.ratingAvg).slice(0, 8).map(app => <AppCard key={app.id} app={app} />)
                     }
                 </div>
                 {!loading && <NavLink to='/apps'><button className="btn bg-linear-to-br from-[#632EE3] to-[#9F62F2] text-white font-semibold w-[10%] mx-auto text-lg mt-5 block">See All</button></NavLink>}

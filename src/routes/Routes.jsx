@@ -4,6 +4,7 @@ import Allapps from '../pages/Allapps'
 import InstalledApps from '../pages/InstalledApps'
 import { Suspense } from 'react'
 import Home from '../pages/Home'
+import AppDetails from '../pages/AppDetails'
 
 
 export const router = createBrowserRouter([
@@ -28,6 +29,10 @@ export const router = createBrowserRouter([
                 path: '/installedApps',
                 Component: InstalledApps
             },
+            {
+                path: '/app/:id',
+                Component: AppDetails
+            }
         ]
     }
 ])

@@ -1,11 +1,24 @@
+import { useEffect, useState } from "react";
 import AppCard from "../components/AppCard";
 import useFetch from "../hooks/useFetch";
 
 const Allapps = () => {
     const { loading, apps } = useFetch()
+    const [search, setSearch] = useState("")
+    const [isSearching, setIsSearching] = useState(false)
+    const txt = search.trim()
+    const searchedItem = apps.filter(app => app.title.includes(txt)) || apps
+    // console.log(searchedItem, typeof searchedItem)
+
+    useEffect(() => {
+        setIsSearching(true)
+        setTimeout(() => {
+            setIsSearching(false)
+        }, 500);
+    }, [txt])
 
     return (
-        <div className='pt-38 bg-gray-100'>
+        <div className='pt-38 bg-gray-100 min-h-screen'>
             <h1 className="text-4xl text-center text-[#001931] font-bold">Our All Applications</h1>
             <p className="text-center text-[#627382] text-xl mt-4 mb-10">Explore All Apps on the Market developed by us. We code for Millions</p>
 
@@ -24,19 +37,21 @@ const Allapps = () => {
                             <path d="m21 21-4.3-4.3"></path>
                         </g>
                     </svg>
-                    <input type="search" placeholder="Search" className="outline-0" />
+                    <input onChange={e => setSearch(e.target.value)} type="search" placeholder="Search" className="outline-0" />
                 </label>
             </div>
 
             <div className="grid grid-cols-4 gap-8 px-8 mt-6">
                 {
-                    loading ? [1, 2, 3, 4].map(index => <div key={index} className="flex flex-col gap-4">
+
+                    loading ? [1, 2, 3, 4, 5, 6, 7, 8].map(index => <div key={index} className="flex flex-col gap-4">
                         <div className="skeleton h-32 w-full"></div>
                         <div className="skeleton h-4 w-28"></div>
                         <div className="skeleton h-4 w-full"></div>
                         <div className="skeleton h-4 w-full"></div>
                     </div>) :
-                        apps.map(app => <AppCard key={app.id} app={app} />)
+                        isSearching ? <p>Searching........</p> : searchedItem.length > 0 ?
+                            searchedItem.map(app => <AppCard key={app.id} app={app} />) : <p>No App Found</p>
                 }
             </div>
         </div>
